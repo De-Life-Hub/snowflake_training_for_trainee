@@ -5,19 +5,13 @@ on:
     branches:
       - develop
       - feature/kuwabara # TODO: あなたの作業ブランチを追加してください
-
-  pull_request:
-    branches:
-      - develop
-      - feature/kuwabara
-
   workflow_dispatch:
 
 jobs:
   terraform:
     name: Terraform
     runs-on: ubuntu-latest
-    environment: linaK-1213 # TODO: あなたのEnvironmentを指定してください
+    environment: ${{ github.actor }}  # TODO: あなたのEnvironmentを指定してください
     env:
       TF_TOKEN_app_terraform_io: ${{ secrets.HCP_API_TOKEN }}
       TF_WORKSPACE: ${{ vars.TF_WORKSPACE }}
