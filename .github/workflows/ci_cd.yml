@@ -81,7 +81,7 @@ jobs:
           DB_NAME=$(terraform output -raw training_db_name)
           echo "DBT_DATABASE=$DB_NAME" >> $GITHUB_ENV
 
-       - name: Install dbt and Run
+      - name: Install dbt and Run
         working-directory: ./dbt/mydbt
         env:
           DBT_ENV_SECRET_PRIVATE_KEY: ${{ secrets.DBT_ENV_SECRET_PRIVATE_KEY }}
