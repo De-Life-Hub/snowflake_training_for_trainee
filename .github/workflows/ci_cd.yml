@@ -1,0 +1,97 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - develop
+      - # TODO: あなたの作業ブランチを追加してください
+  workflow_dispatch:
+
+jobs:
+  terraform:
+    name: Terraform
+    runs-on: ubuntu-latest
+    environment: # TODO: あなたのEnvironmentを指定してください
+    env:
+      TF_TOKEN_app_terraform_io: ${{ secrets.HCP_API_TOKEN }}
+      TF_WORKSPACE: ${{ vars.TF_WORKSPACE }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init
+        working-directory: # TODO: Terraformファイル（.tf）が置かれているディレクトリを指定してください
+        run: terraform init
+
+      - name: Terraform Format Check
+        working-directory: terraform
+        run: terraform fmt -check
+
+      - name: Terraform Plan
+        working-directory: terraform
+        run: terraform plan
+
+      - name: Terraform Apply
+        working-directory: terraform
+        if: github.event_name == 'workflow_dispatch'
+        run: terraform apply -auto-approve
+
+  dbt:
+    name: dbt
+    runs-on: ubuntu-latest
+    environment: # TODO: あなたのEnvironmentを指定してください
+    needs: terraform
+    if: |
+      success() ||
+      (failure() && github.event_name == 'push')
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_wrapper: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Fetch variables from HCP Terraform
+        run: |
+          curl -s \
+            --header "Authorization: Bearer ${{ secrets.HCP_API_TOKEN }}" \
+            --header "Content-Type: application/vnd.api+json" \
+            "https://app.terraform.io/api/v2/workspaces/${{ vars.HCP_WORKSPACE_ID }}/vars" \
+            | python3 src/fetch_tfc_vars.py >> $GITHUB_ENV
+
+      - name: Terraform Output
+        working-directory: terraform
+        env:
+          TF_TOKEN_app_terraform_io: ${{ secrets.HCP_API_TOKEN }}
+          TF_WORKSPACE: ${{ vars.TF_WORKSPACE }}
+        run: |
+          terraform init
+          DB_NAME=$(terraform output -raw training_db_name)
+          echo "DBT_DATABASE=$DB_NAME" >> $GITHUB_ENV
+
+      - name: Install dbt and Run
+        working-directory: ./dbt/mydbt
+        env:
+          DBT_ENV_SECRET_PRIVATE_KEY: ${{ secrets.DBT_ENV_SECRET_PRIVATE_KEY }}
+        run: |
+          pip install --no-cache-dir dbt-snowflake
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            dbt debug --profiles-dir . || true
+            dbt run-operation load_mails_raw --profiles-dir .
+            dbt seed --profiles-dir . 
+            dbt run --profiles-dir .
+          else
+            dbt compile --profiles-dir .
+          fi

@@ -1,0 +1,146 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Email ETL Pipeline: S3 Triggered Lambda for JSONL Transformation'
+
+Parameters:
+  TraineeUserName:
+    Type: String
+    Description: 'Enter your trainee username (e.g. trainee01)'
+    AllowedPattern: '^trainee[0-9a-z-]+$'
+    ConstraintDescription: 'Must start with "trainee" followed by alphanumeric characters or hyphens (e.g. trainee01)'
+
+Resources:
+  # 1. S3バケット
+  MailBucket:
+    Type: 'AWS::S3::Bucket'
+    DependsOn: LambdaPermission
+    Properties:
+      BucketName: !Sub '${TraineeUserName}-bucket'
+      NotificationConfiguration:
+        LambdaConfigurations:
+          - Event: 's3:ObjectCreated:*'
+            Filter:
+              S3Key:
+                Rules:
+                  - Name: prefix
+                    Value: 'raw_emails/'
+                  - Name: suffix
+                    Value: '.eml'
+            Function: !GetAtt EmlProcessorFunction.Arn
+      Tags:
+        - Key: Owner
+          Value: !Ref TraineeUserName
+
+  # 2. バケットポリシー
+  MailBucketPolicy:
+    Type: 'AWS::S3::BucketPolicy'
+    Properties:
+      Bucket: !Ref MailBucket
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowOwnerAccess
+            Effect: Allow
+            Principal:
+              AWS: !Sub 'arn:aws:iam::875180007397:user/${TraineeUserName}'
+            Action: 's3:*'
+            Resource:
+              - !Sub 'arn:aws:s3:::${TraineeUserName}-bucket'
+              - !Sub 'arn:aws:s3:::${TraineeUserName}-bucket/*'
+          - Sid: AllowAdminAccess
+            Effect: Allow
+            Principal:
+              AWS:
+                - 'arn:aws:iam::875180007397:user/SHINJI_KUROSAKI'
+                - 'arn:aws:iam::875180007397:user/TAKUYA_INOUE'
+                - 'arn:aws:iam::875180007397:user/CHIHIRO_SHIRASAKA'
+                - 'arn:aws:iam::875180007397:user/TAIGA_ISHII'
+            Action: 's3:*'
+            Resource:
+              - !Sub 'arn:aws:s3:::${TraineeUserName}-bucket'
+              - !Sub 'arn:aws:s3:::${TraineeUserName}-bucket/*'
+          - Sid: DenyOthers
+            Effect: Deny
+            NotPrincipal:
+              AWS:
+                - !Sub 'arn:aws:iam::875180007397:user/${TraineeUserName}'
+                - 'arn:aws:iam::875180007397:user/SHINJI_KUROSAKI'
+                - 'arn:aws:iam::875180007397:user/TAKUYA_INOUE'
+                - 'arn:aws:iam::875180007397:user/CHIHIRO_SHIRASAKA'
+                - 'arn:aws:iam::875180007397:user/TAIGA_ISHII'
+                - 'arn:aws:iam::875180007397:root'
+            Action: 's3:*'
+            Resource:
+              - !Sub 'arn:aws:s3:::${TraineeUserName}-bucket'
+              - !Sub 'arn:aws:s3:::${TraineeUserName}-bucket/*'
+
+  # 3. IAMロール
+  LambdaExecutionRole:
+    Type: 'AWS::IAM::Role'
+    Properties:
+      RoleName: !Sub '${TraineeUserName}-lambda-execution-role'
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - lambda.amazonaws.com
+            Action:
+              - 'sts:AssumeRole'
+      ManagedPolicyArns:
+        - 'arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole'
+      Policies:
+        - PolicyName: S3AccessPolicy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - 's3:GetObject'
+                  - 's3:PutObject'
+                Resource:
+                  - !Sub 'arn:aws:s3:::${TraineeUserName}-bucket/raw_emails/*'
+                  - !Sub 'arn:aws:s3:::${TraineeUserName}-bucket/messages/*'
+      Tags:
+        - Key: Owner
+          Value: !Ref TraineeUserName
+
+  # 4. Lambda関数
+  EmlProcessorFunction:
+    Type: 'AWS::Lambda::Function'
+    Properties:
+      FunctionName: !Sub '${TraineeUserName}-eml-processor'
+      Handler: lambda_function.lambda_handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Runtime: python3.14
+      Timeout: 10
+      MemorySize: 128
+      Environment:
+        Variables:
+          RECEIVER_COMPANY: 'De-Life株式会社'
+      Code:
+        S3Bucket: 'anchor-deploy-package'
+        S3Key: 'lambda-package.zip'
+      Tags:
+        - Key: Owner
+          Value: !Ref TraineeUserName
+
+  # 5. S3がLambdaを呼び出すための権限設定
+  LambdaPermission:
+    Type: 'AWS::Lambda::Permission'
+    Properties:
+      Action: 'lambda:InvokeFunction'
+      FunctionName: !GetAtt EmlProcessorFunction.Arn
+      Principal: s3.amazonaws.com
+      SourceArn: !Sub 'arn:aws:s3:::${TraineeUserName}-bucket'
+
+Outputs:
+  BucketName:
+    Description: 'S3 Bucket Name'
+    Value: !Ref MailBucket
+  LambdaFunctionName:
+    Description: 'Lambda Function Name'
+    Value: !Ref EmlProcessorFunction
+  LambdaExecutionRoleArn:
+    Description: 'Lambda Execution Role ARN'
+    Value: !GetAtt LambdaExecutionRole.Arn

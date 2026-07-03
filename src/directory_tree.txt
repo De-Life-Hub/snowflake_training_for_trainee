@@ -1,0 +1,75 @@
+C:\SNOWFLAKE_TRAINING
+│  .gitignore
+│  README.md
+│
+├─.github
+│  └─workflows
+│          ci_cd.yml
+│
+├─dbt
+│  ├─logs
+│  │      dbt.log
+│  │
+│  └─mydbt
+│      │  dbt_project.yml
+│      │  profiles.yml
+│      │
+│      ├─analyses
+│      │      .gitkeep
+│      │
+│      ├─macros
+│      │      .gitkeep
+│      │      generate_schema_name.sql
+│      │      load_mails_raw.sql
+│      │
+│      ├─models
+│      │  └─mymodel
+│      │          dbt_query.sql
+│      │          sources.yml
+│      │
+│      ├─snapshots
+│      │      .gitkeep
+│      │
+│      └─tests
+│              .gitkeep
+│
+├─secrets
+│  │  dbt_rsa_key.p8
+│  │  dbt_rsa_key.pub
+│  │  rsa_key.p8
+│  │  rsa_key.pub
+│  │
+│  └─dbt
+├─src
+│      directory_tree.txt
+│      fetch_tfc_vars.py
+│      keygen.py
+│      qz-trainee-pipeline.yml
+│      trainee-pipeline.yml
+│
+└─terraform
+    │  .terraform.lock.hcl
+    │  database.tf
+    │  main.tf
+    │  outputs.tf
+    │  pipeline.tf
+    │  README.md
+    │  schema.tf
+    │  terraform.tfstate
+    │  terraform.tfvars
+    │  variables.tf
+    │
+    └─.terraform
+        │  environment
+        │  terraform.tfstate
+        │
+        └─providers
+            └─registry.terraform.io
+                └─snowflakedb
+                    └─snowflake
+                        └─2.16.0
+                            └─windows_amd64
+                                    CHANGELOG.md
+                                    LICENSE
+                                    README.md
+                                    terraform-provider-snowflake_v2.16.0.exe

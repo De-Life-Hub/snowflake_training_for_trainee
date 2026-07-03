@@ -1,0 +1,30 @@
+name: 'mydbt'
+version: '1.0.0'
+
+profile: 'mydbt'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  mydbt:
+    mymodel:
+      +materialized: table
+      +schema: NORMALIZED
+
+seeds:
+  mydbt:
+    mytable_name: # TODO:テーブル名を正しく指定してください。
+      +schema: NORMALIZED
+      +column_types:
+        LABEL: varchar
+        DESCRIPTION: varchar
+        row3: null # TODO:列を正しく定義してください。

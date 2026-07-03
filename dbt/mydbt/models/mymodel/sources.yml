@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: raw
+    database: "{{ env_var('DBT_DATABASE') }}"
+    schema: RAW
+    tables:
+      - name: MAILS_RAW

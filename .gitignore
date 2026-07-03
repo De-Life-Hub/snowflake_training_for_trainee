@@ -1,0 +1,24 @@
+# Terraformプロバイダーバイナリ（容量が大きくGit管理不要）
+terraform/.terraform/
+terraform/providers/
+
+# stateファイル（Terraform Cloudで管理するため除外）
+*.tfstate
+*.tfstate.backup
+
+# 認証情報を含む変数ファイル
+terraform/*.tfvars
+
+# 秘密鍵（絶対にGitに含めない）
+*.p8
+*.pem
+*.key
+# *.pub # 公開鍵を含めることとする
+
+# .venvフォルダ
+dbt/.venv/
+__pycache__/
+*.pyc
+
+# dbt接続情報（作業開始前に追加）
+dbt/profiles.yml

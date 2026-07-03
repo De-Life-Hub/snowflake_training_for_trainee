@@ -1,0 +1,62 @@
+X-UIDL: UID484-1759727592
+X-Mozilla-Status: 0001
+X-Mozilla-Status2: 00000000
+X-Mozilla-Keys:                                                                                 
+Return-Path: <chihiro.shirasaka@de-life.co.jp>
+Delivered-To: chihiro.shirasaka@de-life.co.jp
+X-Virus-Status: scanned (With Secure/Atlant/virusgw12114.xserver.jp/)
+Received: from [192.168.103.123] (fsb6a9533d.tkyc201.ap.nuro.jp [182.169.83.61])
+	by sv13248.xserver.jp (Postfix) with ESMTPSA id A21B25809F0833;
+	Thu,  4 Jun 2026 19:49:33 +0900 (JST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=de-life.co.jp;
+	s=default; t=1780570174;
+	bh=sFwxl88OMlGxybV9I3fJB1o1uW7fkypKttA2+zMdkuE=;
+	h=Date:From:Subject:To:From;
+	b=dXQbBkB0WOwF2Aiz3PRDOpUC9nVRlYIDwmpsoBAR+LU7JMS/dM2gJKwe8cVt/LZgK
+	 C2GOPrfenxbB0P+7RJd75pMN96vET3/vuuXrAsyj05xIBqjl8eCY4K7XT7MudxEDBr
+	 ml4mwp1taWXcWo7EUW2DfFZj436UC5QOWQ8pODSshzTuRzdYKRTWMknaD7c2712v+x
+	 skZevkhnlxd7GNPmAMnctm/8LFqAHUOPeszmEbNe4xpa145LjEV4FBAdgqpFgQF224
+	 M7+vjrsrHTo7YPkY7bd3t+50gSoo3d56IWkrC3hgpb9phcE6bXYR5hObCj9DmgEm6c
+	 Q3mQ6AkFlUAPQ==
+Message-ID: <e19bb143-7fb0-4e3c-b43c-5f863135ff7a@de-life.co.jp>
+Date: Thu, 4 Jun 2026 19:49:33 +0900
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+From: =?UTF-8?B?55m95Z2C44Gh44Gy44KN?= <chihiro.shirasaka@de-life.co.jp>
+Subject: =?UTF-8?B?44CQ55m95Z2C44Gh44Gy44KN44CRNi8044GuKOacqCnjga7ml6XloLE=?=
+ =?UTF-8?B?44Gr44Gk44GE44Gm?=
+To: shinji.kurosaki@de-life.co.jp, taiga.ishii@de-life.co.jp,
+ chihiro.shirasaka@de-life.co.jp, hiroyuki.kaneko@de-life.co.jp,
+ takuya.inoue@de-life.co.jp
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+XSRV-Filter: chihiro.shirasaka@de-life.co.jp
+
+De-Life 各位
+
+お疲れ様です。白坂です。
+6/4(木)の日報です。
+
+＜本日のスケジュール＞
+09:35～09:45 準備
+09:45～10:00 朝会
+10:00～11:30 新PCセットアップ & 研修2章までの環境構築
+11:30～12:00 研修資料作成・更新方法の検討
+13:00～14:30 Word資料をMarkdownへ移行, CI/CD構築の検討
+14:30～15:00 Snowflake研修
+15:00～15:30 面談練習
+15:30～18:30 面談向けにSnowflakeの理解
+
+新PCを貸与いただけたので、セットアップを行いました。
+また、昨日に引き続き、研修資料作成・更新方法の検討を行いました。現時点では、Markdownでの運用が一番いいのではないかと考えており、そのためにWordファイルをMarkdownへ移行しました。
+Snowflakeの研修も少しだけ進めましたが、本日19時の面談に向けてAnchorメインでSnowflakeの勉強を行いました。
+
+＜6/5の予定＞
+・Snowflake研修プログラムを引き続き進める
+・研修資料の作成・更新方法の検討を引き続き行う
+・研修資料の修正を行う
+
+
+以上です
+

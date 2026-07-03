@@ -1,0 +1,6 @@
+ORDER_ID,CUSTOMER_NAME,PRODUCT,QUANTITY,STATUS
+1,山田太郎,ノートPC,2,completed
+2,鈴木花子,マウス,5,completed
+3,田中一郎,キーボード,1,pending
+4,佐藤美咲,モニター,1,cancelled
+5,高橋健太,USBハブ,3,completed
