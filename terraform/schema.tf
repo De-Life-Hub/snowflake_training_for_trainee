@@ -4,15 +4,15 @@
 resource "snowflake_schema" "training_raw" {
   database = snowflake_database.training_db.name
   name     = "RAW" # TODO:ハンドアウトを参照し、適切なスキーマ名を設定してください
-                   # S3から取り込んだメールの生データを保持するスキーマ。
-  comment  = "Raw mail data ingested from S3."
+  # S3から取り込んだメールの生データを保持するスキーマ。
+  comment = "Raw mail data ingested from S3."
 }
 
 resource "snowflake_schema" "training_normalized" {
   database = snowflake_database.training_db.name
   name     = "NORMALIZED" # TODO:ハンドアウトを参照し、適切なスキーマ名を設定してください
-                          # 加工・正規化済みデータを保持するスキーマ。
-  comment  = "Processed data for Streamlit."
+  # 加工・正規化済みデータを保持するスキーマ。
+  comment = "Processed data for Streamlit."
 }
 
 # ==========================================
