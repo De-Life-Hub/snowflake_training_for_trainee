@@ -8,7 +8,7 @@ WITH labels AS (
     FROM {{ this.database }}.NORMALIZED.CLASSIFY_TEXT_LABELS
 ),
 
-trimmed AS ( #前処理としてHTMLタグを消して、4000字に切る。
+trimmed AS (  -- 前処理としてHTMLタグを消して、4000字に切る。
     SELECT
         MESSAGE_ID,
         SUBJECT,
@@ -77,7 +77,7 @@ SELECT
         ) THEN 'その他'
         ELSE category_raw
     END AS AI_CATEGORY,
-    CASE #SENTIMENT 関数が返す sentiment_score の幅（範囲）は、-1.0 から 1.0 までの間。0.0はニュートラル。
+    CASE -- SENTIMENT 関数が返す sentiment_score の幅（範囲）は、-1から 1までの間。0はニュートラル。
 
         WHEN sentiment_score >= 0.3 THEN 'positive'
         WHEN sentiment_score <= -0.3 THEN 'negative'
