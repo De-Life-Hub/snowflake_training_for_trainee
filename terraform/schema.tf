@@ -23,7 +23,7 @@ resource "snowflake_grant_privileges_to_account_role" "training_schema_grants" {
     "${snowflake_database.training_db.name}.${snowflake_schema.training_raw.name}",
     "${snowflake_database.training_db.name}.${snowflake_schema.training_normalized.name}"
   ])
-  account_role_name = var.snowflake_role
+  account_role_name = var.snowflake_role_name
   privileges = [
     "USAGE",
     "MODIFY",
@@ -44,7 +44,7 @@ resource "snowflake_grant_privileges_to_account_role" "training_schema_grants" {
 }
 
 resource "snowflake_grant_privileges_to_account_role" "future_schema_training" {
-  account_role_name = var.snowflake_role
+  account_role_name = var.snowflake_role_name
   privileges = [
     "USAGE",
     "MODIFY",
@@ -65,7 +65,7 @@ resource "snowflake_grant_privileges_to_account_role" "future_schema_training" {
 }
 
 resource "snowflake_grant_privileges_to_account_role" "training_wh_usage" {
-  account_role_name = var.snowflake_role
+  account_role_name = var.snowflake_role_name
   privileges        = ["USAGE"]
   on_account_object {
     object_type = "WAREHOUSE"

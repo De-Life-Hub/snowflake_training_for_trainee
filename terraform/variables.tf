@@ -14,6 +14,10 @@ variable "snowflake_role" {
   type = string
 }
 
+variable "snowflake_role_name" {
+  type = string
+}
+
 variable "snowflake_warehouse" {
   type = string
 }

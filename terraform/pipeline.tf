@@ -132,7 +132,7 @@ resource "snowflake_pipe" "pipe_s3_to_mails_raw" {
 # 権限付与
 # ==========================================
 resource "snowflake_grant_privileges_to_account_role" "s3_int_usage" {
-  account_role_name = var.snowflake_role
+  account_role_name = var.snowflake_role_name
   privileges        = ["USAGE"]
   on_account_object {
     object_type = "INTEGRATION"
@@ -141,7 +141,7 @@ resource "snowflake_grant_privileges_to_account_role" "s3_int_usage" {
 }
 
 resource "snowflake_grant_privileges_to_account_role" "mails_raw_grants" {
-  account_role_name = var.snowflake_role
+  account_role_name = var.snowflake_role_name
   privileges        = ["SELECT", "INSERT", "UPDATE", "DELETE", "TRUNCATE"]
   on_schema_object {
     object_type = "TABLE"
@@ -150,7 +150,7 @@ resource "snowflake_grant_privileges_to_account_role" "mails_raw_grants" {
 }
 
 resource "snowflake_grant_privileges_to_account_role" "future_table_grants" {
-  account_role_name = var.snowflake_role
+  account_role_name = var.snowflake_role_name
   privileges        = ["SELECT", "INSERT", "UPDATE", "DELETE"]
   on_schema_object {
     future {
@@ -161,7 +161,7 @@ resource "snowflake_grant_privileges_to_account_role" "future_table_grants" {
 }
 
 resource "snowflake_grant_privileges_to_account_role" "stage_usage" {
-  account_role_name = var.snowflake_role
+  account_role_name = var.snowflake_role_name
   privileges        = ["USAGE", "READ"]
   on_schema_object {
     object_type = "STAGE"
@@ -170,7 +170,7 @@ resource "snowflake_grant_privileges_to_account_role" "stage_usage" {
 }
 
 resource "snowflake_grant_privileges_to_account_role" "future_stage_usage" {
-  account_role_name = var.snowflake_role
+  account_role_name = var.snowflake_role_name
   privileges        = ["USAGE", "READ"]
   on_schema_object {
     future {
@@ -181,7 +181,7 @@ resource "snowflake_grant_privileges_to_account_role" "future_stage_usage" {
 }
 
 resource "snowflake_grant_privileges_to_account_role" "file_format_usage" {
-  account_role_name = var.snowflake_role
+  account_role_name = var.snowflake_role_name
   privileges        = ["USAGE"]
   on_schema_object {
     object_type = "FILE FORMAT"
@@ -190,7 +190,7 @@ resource "snowflake_grant_privileges_to_account_role" "file_format_usage" {
 }
 
 resource "snowflake_grant_privileges_to_account_role" "future_file_format_usage" {
-  account_role_name = var.snowflake_role
+  account_role_name = var.snowflake_role_name
   privileges        = ["USAGE"]
   on_schema_object {
     future {
