@@ -8,7 +8,7 @@ WITH labels AS (
     FROM {{ this.database }}.NORMALIZED.CLASSIFY_TEXT_LABELS
 ),
 
-trimmed AS (
+trimmed AS ( #前処理としてHTMLタグを消して、4000字に切る。
     SELECT
         MESSAGE_ID,
         SUBJECT,
@@ -66,7 +66,7 @@ ai_processed AS (
 
 SELECT
     MESSAGE_ID,
-    ???, -- TODO:メールの件名を表示する列を定義してください。
+    SUBJECT, -- TODO:メールの件名を表示する列を定義してください。
     FROM_EMAIL,
     RECEIVED_AT,
     TRUE AS AI_PROCESSED,
@@ -77,7 +77,12 @@ SELECT
         ) THEN 'その他'
         ELSE category_raw
     END AS AI_CATEGORY,
-    'neutral' AS AI_SENTIMENT, -- TODO: 感情判定の結果を、文字列として格納する列を定義してください。
+    CASE #SENTIMENT 関数が返す sentiment_score の幅（範囲）は、-1.0 から 1.0 までの間。0.0はニュートラル。
+
+        WHEN sentiment_score >= 0.3 THEN 'positive'
+        WHEN sentiment_score <= -0.3 THEN 'negative'
+        ELSE 'neutral' 
+    END AS AI_SENTIMENT, -- TODO: 感情判定の結果を、文字列として格納する列を定義してください。
     keywords AS AI_KEYWORDS,
     OBJECT_CONSTRUCT(
         'summary', summary,
