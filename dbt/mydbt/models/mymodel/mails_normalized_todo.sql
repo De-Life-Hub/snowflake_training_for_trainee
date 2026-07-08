@@ -1,6 +1,7 @@
 {{ config(
     materialized='table',
-    schema='NORMALIZED_TODO'  -- 新しいTODO用のスキーマへ書き出すように指定
+    schema='NORMALIZED_TODO'
+    -- 新しいTODO用のスキーマへ書き出すように指定
 ) }}
 
 WITH labels AS (
