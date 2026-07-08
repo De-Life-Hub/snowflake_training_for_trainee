@@ -19,12 +19,19 @@ models:
     mymodel:
       +materialized: table
       +schema: NORMALIZED
+    # TODOアプリ用のフォルダ構成とスキーマを指定
+    todo:
+      +materialized: table
+      +schema: NORMALIZED_TODO
 
 seeds:
   mydbt:
-    classify_text_label: # TODO:テーブル名を正しく指定してください。
+    classify_text_labels: # TODO:テーブル名を正しく指定してください。
       +schema: NORMALIZED
       +column_types:
         LABEL: varchar
         DESCRIPTION: varchar
         SORT_ORDER: integer # TODO:列を正しく定義してください。
+        # TODO用のシードcsvファイルを配置するフォルダとスキーマを指定
+    todo:
+      +schema: NORMALIZED_TODO
