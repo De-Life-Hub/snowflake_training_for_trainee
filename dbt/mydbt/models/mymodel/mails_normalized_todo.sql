@@ -1,11 +1,11 @@
 {{ config(
     materialized='table',
-    schema='NORMALIZED_TODO'  -- 💡 新しいTODO用のスキーマへ書き出すように指定
+    schema='NORMALIZED_TODO'  -- 新しいTODO用のスキーマへ書き出すように指定
 ) }}
 
 WITH labels AS (
     SELECT ARRAY_AGG(LABEL) WITHIN GROUP (ORDER BY SORT_ORDER) AS label_array
-    -- 💡 TODO用のマスタテーブルを参照
+    -- TODO用のマスタテーブルを参照
     FROM {{ this.database }}.NORMALIZED_TODO.CLASSIFY_TEXT_LABELS
 ),
 
@@ -19,7 +19,7 @@ trimmed AS (  -- 前処理としてHTMLタグを消して、4000字に切る。
             REGEXP_REPLACE(BODY_TEXT, '<[^>]+>', ''),
             4000
         ) AS body_trimmed
-    -- 💡 TODO用の生データが入っているRAW_TODOスキーマから読み込む
+    -- TODO用の生データが入っているRAW_TODOスキーマから読み込む
     FROM {{ this.database }}.RAW_TODO.MAILS_RAW
 ),
 
@@ -74,7 +74,7 @@ SELECT
     TRUE AS AI_PROCESSED,
     summary AS AI_SUMMARY,
     CASE
-        -- 💡 チェック対象のマスタテーブルも NORMALIZED_TODO を参照
+        -- チェック対象のマスタテーブルも NORMALIZED_TODO を参照
         WHEN category_raw NOT IN (
             SELECT LABEL FROM {{ this.database }}.NORMALIZED_TODO.CLASSIFY_TEXT_LABELS
         ) THEN 'その他'
