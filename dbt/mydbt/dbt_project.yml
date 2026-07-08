@@ -34,4 +34,10 @@ seeds:
         SORT_ORDER: integer # TODO:列を正しく定義してください。
         # TODO用のシードcsvファイルを配置するフォルダとスキーマを指定
     todo:
+      classify_text_labels: # TODO:テーブル名を正しく指定してください。
       +schema: NORMALIZED_TODO
+      +column_types:
+        LABEL: varchar
+        DESCRIPTION: varchar
+        SORT_ORDER: integer # TODO:列を正しく定義してください。
+        # TODO用のシードcsvファイルを配置するフォルダとスキーマを指定

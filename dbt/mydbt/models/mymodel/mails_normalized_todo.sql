@@ -29,7 +29,7 @@ keywords_extracted AS (
         RECEIVED_AT,
         body_trimmed,
         SNOWFLAKE.CORTEX.COMPLETE(
-            'mistral-large',
+            'mistral-large2',
             CONCAT(
                 'Extract 3-5 important keywords from the following email. ',
                 'Return ONLY a JSON array of strings with no explanation, no preamble, no markdown. ',
@@ -49,7 +49,7 @@ ai_processed AS (
         k.RECEIVED_AT,
         SNOWFLAKE.CORTEX.SUMMARIZE(k.body_trimmed) AS summary,
         TRIM(SNOWFLAKE.CORTEX.COMPLETE(
-            'mistral-large',
+            'mistral-large2',
             CONCAT(
                 '以下のメール本文を読み、次のカテゴリから最も適切なものを1つだけ答えてください。',
                 'カテゴリ名のみ返してください。余分な説明は不要です。\n',
