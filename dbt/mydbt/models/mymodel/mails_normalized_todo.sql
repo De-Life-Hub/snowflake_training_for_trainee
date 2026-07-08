@@ -1,10 +1,11 @@
 {{ config(
     materialized='table',
-    schema='NORMALIZED_TODO'
+    schema='NORMALIZED_TODO'  -- 💡 新しいTODO用のスキーマへ書き出すように指定
 ) }}
 
 WITH labels AS (
     SELECT ARRAY_AGG(LABEL) WITHIN GROUP (ORDER BY SORT_ORDER) AS label_array
+    -- 💡 TODO用のマスタテーブルを参照
     FROM {{ this.database }}.NORMALIZED_TODO.CLASSIFY_TEXT_LABELS
 ),
 
@@ -18,7 +19,8 @@ trimmed AS (  -- 前処理としてHTMLタグを消して、4000字に切る。
             REGEXP_REPLACE(BODY_TEXT, '<[^>]+>', ''),
             4000
         ) AS body_trimmed
-    FROM {{ source('raw', 'MAILS_RAW') }}
+    -- 💡 TODO用の生データが入っているRAW_TODOスキーマから読み込む
+    FROM {{ this.database }}.RAW_TODO.MAILS_RAW
 ),
 
 keywords_extracted AS (
@@ -66,23 +68,23 @@ ai_processed AS (
 
 SELECT
     MESSAGE_ID,
-    SUBJECT, -- TODO:メールの件名を表示する列を定義してください。
+    SUBJECT, 
     FROM_EMAIL,
     RECEIVED_AT,
     TRUE AS AI_PROCESSED,
     summary AS AI_SUMMARY,
     CASE
+        -- 💡 チェック対象のマスタテーブルも NORMALIZED_TODO を参照
         WHEN category_raw NOT IN (
             SELECT LABEL FROM {{ this.database }}.NORMALIZED_TODO.CLASSIFY_TEXT_LABELS
         ) THEN 'その他'
         ELSE category_raw
     END AS AI_CATEGORY,
-    CASE -- SENTIMENT 関数が返す sentiment_score の幅（範囲）は、-1から 1までの間。0はニュートラル。
-
+    CASE 
         WHEN sentiment_score >= 0.3 THEN 'positive'
         WHEN sentiment_score <= -0.3 THEN 'negative'
         ELSE 'neutral' 
-    END AS AI_SENTIMENT, -- TODO: 感情判定の結果を、文字列として格納する列を定義してください。
+    END AS AI_SENTIMENT, 
     keywords AS AI_KEYWORDS,
     OBJECT_CONSTRUCT(
         'summary', summary,
@@ -90,5 +92,5 @@ SELECT
         'sentiment_score', sentiment_score,
         'keywords', keywords
     ) AS AI_RAW_RESULT,
-    CURRENT_TIMESTAMP() AS NORMALIZED_TODO_AT
+    CURRENT_TIMESTAMP() AS NORMALIZED_AT
 FROM ai_processed
