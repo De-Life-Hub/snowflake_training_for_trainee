@@ -41,13 +41,13 @@ keywords_extracted AS (
     FROM trimmed
 ),
 
--- 1. ここでAIの各種スコアやカテゴリの生データを一度計算します（元コードのロジックを維持）
 ai_calculated AS (
     SELECT
         k.MESSAGE_ID,
         k.SUBJECT,
         k.FROM_EMAIL,
         k.RECEIVED_AT,
+        k.body_trimmed,
         SNOWFLAKE.CORTEX.SUMMARIZE(k.body_trimmed) AS summary,
         TRIM(SNOWFLAKE.CORTEX.COMPLETE(
             'mistral-large2',
@@ -60,84 +60,49 @@ ai_calculated AS (
             )
         )) AS category_raw,
         SNOWFLAKE.CORTEX.SENTIMENT(k.body_trimmed) AS sentiment_score,
-        k.keywords
+        k.keywords,
+
+        -- 💡【新規追加】AIに本文から「具体的なTODO内容」を抽出させる指示
+        TRIM(SNOWFLAKE.CORTEX.COMPLETE(
+            'mistral-large2',
+            CONCAT(
+                '以下のメール本文から、やるべきこと（TODOタスク）を1文で簡潔に抽出してください。',
+                '余計な解説や挨拶、前置きは一切含めず、タスク内容のみを出力してください。\n',
+                'メール本文: ', k.body_trimmed
+            )
+        )) AS todo_task_extracted,
+
+        -- 💡【新規追加】AIに本文から「期限の日付」を抽出させる指示
+        TRIM(SNOWFLAKE.CORTEX.COMPLETE(
+            'mistral-large2',
+            CONCAT(
+                '以下のメール本文から、タスクの期限・期日（日付）を抽出して「YYYY-MM-DD」の形式のみで返してください。',
+                'もし本文中に明確な期限が書かれていない場合は、メールの受信日である「', TO_VARCHAR(k.RECEIVED_AT, 'YYYY-MM-DD'), '」をそのまま返してください。',
+                '余計な文字や説明、マークダウンは絶対に含めず、日付の文字列（例: 2026-07-07）のみを返してください。\n',
+                'メール本文: ', k.body_trimmed
+            )
+        )) AS todo_deadline_extracted
     FROM keywords_extracted AS k
     CROSS JOIN labels AS l
 )
 
--- 2. 最後に、画像に合わせた「日本語の列名」を整えつつ、TODOのみに絞り込みます
+-- 最後に、画面に表示したい4つの列（期日、TODO、完了 / 未完了、優先度）のみに絞り込みます
 SELECT
-    -- 画像の「期日」に相当する列 (受信日時を日付の形式に整える)
-    TO_DATE(RECEIVED_AT) AS "期日",
+    -- 1. AIが抽出した期限を日付型（または文字）にして「期日」とする
+    TRY_TO_DATE(todo_deadline_extracted) AS "期日",
     
-    -- 画像の「TODO」に相当する列 (メールの件名を表示)
-    SUBJECT AS "TODO", 
+    -- 2. AIが抽出したタスクの本文内容を「TODO」とする
+    todo_task_extracted AS "TODO", 
     
-    -- 画像の「完了 / 未完了」に相当する列 (初期データは一律 '未完了' とします)
+    -- 3. 「完了 / 未完了」の列
     '未完了' AS "完了 / 未完了",
     
-    -- 画像の「優先度」に相当する列 (ネガティブな内容＝至急対応なら星2つ、それ以外は星1つ)
+    -- 4. 「優先度」の列
     CASE 
         WHEN sentiment_score <= -0.3 THEN '★★'
         ELSE '★'
-    END AS "優先度",
+    END AS "優先度"
 
-    -- 【裏側のデータ用】元の列名もテーブルの互換性のために残しておきます
-    MESSAGE_ID,
-    SUBJECT,
-    FROM_EMAIL,
-    RECEIVED_AT,
-    TRUE AS AI_PROCESSED,
-    summary AS AI_SUMMARY,
-    CASE
-        WHEN category_raw NOT IN (
-            SELECT LABEL FROM {{ this.database }}.NORMALIZED_TODO.CLASSIFY_TEXT_LABELS_TODO
-        ) THEN 'その他'
-        ELSE category_raw
-    END AS AI_CATEGORY,
-    CASE 
-        WHEN sentiment_score >= 0.3 THEN 'positive'
-        WHEN sentiment_score <= -0.3 THEN 'negative'
-        ELSE 'neutral' 
-    END AS AI_SENTIMENT,
-    keywords AS AI_KEYWORDS,
-    OBJECT_CONSTRUCT(
-        'summary', summary,
-        'category', category_raw,
-        'sentiment_score', sentiment_score,
-        'keywords', keywords
-    ) AS AI_RAW_RESULT,
-    CURRENT_TIMESTAMP() AS NORMALIZED_AT
 FROM ai_calculated
 WHERE category_raw = 'TODO' 
    OR category_raw = 'TODOアプリ'
-
-
--- SELECT
---     MESSAGE_ID,
---     SUBJECT, -- TODO:メールの件名を表示する列を定義してください。
---     FROM_EMAIL,
---     RECEIVED_AT,
---     TRUE AS AI_PROCESSED,
---     summary AS AI_SUMMARY,
---     CASE
---         WHEN category_raw NOT IN (
---             SELECT LABEL FROM {{ this.database }}.NORMALIZED_TODO.CLASSIFY_TEXT_LABELS_TODO -- {{ ref('classify_text_labels_todo') }}
---         ) THEN 'その他'
---         ELSE category_raw
---     END AS AI_CATEGORY,
---     CASE -- SENTIMENT 関数が返す sentiment_score の幅（範囲）は、-1から 1までの間。0はニュートラル。
-
---         WHEN sentiment_score >= 0.3 THEN 'positive'
---         WHEN sentiment_score <= -0.3 THEN 'negative'
---         ELSE 'neutral' 
---     END AS AI_SENTIMENT, -- TODO: 感情判定の結果を、文字列として格納する列を定義してください。
---     keywords AS AI_KEYWORDS,
---     OBJECT_CONSTRUCT(
---         'summary', summary,
---         'category', category_raw,
---         'sentiment_score', sentiment_score,
---         'keywords', keywords
---     ) AS AI_RAW_RESULT,
---     CURRENT_TIMESTAMP() AS NORMALIZED_AT
--- FROM ai_processed
