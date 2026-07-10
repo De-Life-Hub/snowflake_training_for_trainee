@@ -76,3 +76,265 @@ Parsing Error
 [0m16:27:49.154230 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021609CFFE90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002160B3EE570>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002160B3ED700>]}
 [0m16:27:49.154230 [debug] [MainThread]: Flushing usage events
 [0m16:27:50.565357 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:43:32.045653 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000210E42C5130>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000210E513A9F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000210E4C37020>]}
+
+
+============================== 16:43:32.058930 | 43459877-1b3f-42f2-b56a-9ad7bde45b72 ==============================
+[0m16:43:32.058930 [info ] [MainThread]: Running with dbt=1.11.12
+[0m16:43:32.058930 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'False', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\De-Life4\\snowflake_training_for_trainee-1\\dbt\\mydbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'invocation_command': 'dbt run --select mails_normalized_todo', 'indirect_selection': 'eager', 'use_colors': 'True', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\De-Life4\\snowflake_training_for_trainee-1\\dbt\\mydbt\\logs'}
+[0m16:43:32.058930 [error] [MainThread]: Encountered an error:
+Parsing Error
+  Env var required but not provided: 'DBT_ENV_SECRET_ACCOUNT'
+[0m16:43:32.071784 [debug] [MainThread]: Command `dbt run` failed at 16:43:32.058930 after 0.17 seconds
+[0m16:43:32.071784 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000210E4D51D00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000210E4EDFEF0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000210E6607110>]}
+[0m16:43:32.072801 [debug] [MainThread]: Flushing usage events
+[0m16:43:33.342560 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:47:07.042893 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000229BD6DC290>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000229BB2C26C0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000229BBC1FF80>]}
+
+
+============================== 16:47:07.048596 | 943037a7-e50b-4599-9270-16d1c1e63c1c ==============================
+[0m16:47:07.048596 [info ] [MainThread]: Running with dbt=1.11.12
+[0m16:47:07.048596 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'empty': 'False', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\De-Life4\\snowflake_training_for_trainee-1\\dbt\\mydbt', 'indirect_selection': 'eager', 'invocation_command': 'dbt run --select mails_normalized_todo', 'use_colors': 'True', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\De-Life4\\snowflake_training_for_trainee-1\\dbt\\mydbt\\logs'}
+[0m16:47:07.067142 [error] [MainThread]: Encountered an error:
+Parsing Error
+  Env var required but not provided: 'DBT_ENV_SECRET_USER'
+[0m16:47:07.068151 [debug] [MainThread]: Command `dbt run` failed at 16:47:07.068151 after 0.54 seconds
+[0m16:47:07.068151 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000229BB3A8BF0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000229BBFBFFB0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000229BD68AC00>]}
+[0m16:47:07.069161 [debug] [MainThread]: Flushing usage events
+[0m16:47:08.600554 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:47:20.465991 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000018FC7790CB0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000018FC702EF30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000018FC702CB60>]}
+
+
+============================== 16:47:20.465991 | 664c045f-517c-495d-9057-bbec3de83abc ==============================
+[0m16:47:20.465991 [info ] [MainThread]: Running with dbt=1.11.12
+[0m16:47:20.465991 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'empty': 'False', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\De-Life4\\snowflake_training_for_trainee-1\\dbt\\mydbt', 'indirect_selection': 'eager', 'use_colors': 'True', 'invocation_command': 'dbt run --select mails_normalized_todo', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\De-Life4\\snowflake_training_for_trainee-1\\dbt\\mydbt\\logs'}
+[0m16:47:20.476992 [error] [MainThread]: Encountered an error:
+Parsing Error
+  Env var required but not provided: 'DBT_ENV_SECRET_ROLE'
+[0m16:47:20.476992 [debug] [MainThread]: Command `dbt run` failed at 16:47:20.476992 after 0.16 seconds
+[0m16:47:20.484341 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000018FC8FBAD50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000018FC7880080>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000018FC7104EC0>]}
+[0m16:47:20.485352 [debug] [MainThread]: Flushing usage events
+[0m16:47:21.610510 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:48:09.572087 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002531E6575F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002531B12ECF0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002531EDB8CB0>]}
+
+
+============================== 16:48:09.587732 | 4559859a-5f92-4513-be73-000a1941c33a ==============================
+[0m16:48:09.587732 [info ] [MainThread]: Running with dbt=1.11.12
+[0m16:48:09.587732 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'empty': 'False', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'profiles_dir': 'C:\\Users\\De-Life4\\snowflake_training_for_trainee-1\\dbt\\mydbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'indirect_selection': 'eager', 'use_colors': 'True', 'invocation_command': 'dbt run --select mails_normalized_todo', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\De-Life4\\snowflake_training_for_trainee-1\\dbt\\mydbt\\logs'}
+[0m16:48:09.587732 [error] [MainThread]: Encountered an error:
+Parsing Error
+  Env var required but not provided: 'DBT_ENV_SECRET_WAREHOUSE'
+[0m16:48:09.587732 [debug] [MainThread]: Command `dbt run` failed at 16:48:09.587732 after 0.20 seconds
+[0m16:48:09.587732 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002531E6575F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002531E96FE60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002531EDB8590>]}
+[0m16:48:09.587732 [debug] [MainThread]: Flushing usage events
+[0m16:48:11.076925 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:48:40.659588 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021192E93E60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021190485F40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002119295B7D0>]}
+
+
+============================== 16:48:40.659588 | 0ac85f59-c025-4d42-b7c1-f59d319e8f02 ==============================
+[0m16:48:40.659588 [info ] [MainThread]: Running with dbt=1.11.12
+[0m16:48:40.659588 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'empty': 'False', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\De-Life4\\snowflake_training_for_trainee-1\\dbt\\mydbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'indirect_selection': 'eager', 'use_colors': 'True', 'invocation_command': 'dbt run --select mails_normalized_todo', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\De-Life4\\snowflake_training_for_trainee-1\\dbt\\mydbt\\logs'}
+[0m16:48:40.680045 [error] [MainThread]: Encountered an error:
+Parsing Error
+  Env var required but not provided: 'DBT_DATABASE'
+[0m16:48:40.681044 [debug] [MainThread]: Command `dbt run` failed at 16:48:40.681044 after 0.15 seconds
+[0m16:48:40.682047 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000211922BE600>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002119298E990>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021191C19DC0>]}
+[0m16:48:40.682047 [debug] [MainThread]: Flushing usage events
+[0m16:48:41.789917 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:54:51.877089 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000026DFF0C51F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000026DFF6526F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000026DFE8FAA20>]}
+
+
+============================== 16:54:51.899504 | 8576d3d6-d064-41fe-85f7-633ebd5acb3f ==============================
+[0m16:54:51.899504 [info ] [MainThread]: Running with dbt=1.11.12
+[0m16:54:51.900500 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'False', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\De-Life4\\snowflake_training_for_trainee-1\\dbt\\mydbt', 'indirect_selection': 'eager', 'invocation_command': 'dbt run --select mails_normalized_todo', 'use_colors': 'True', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\De-Life4\\snowflake_training_for_trainee-1\\dbt\\mydbt\\logs'}
+[0m16:54:51.914515 [error] [MainThread]: Encountered an error:
+Parsing Error
+  Env var required but not provided: 'DBT_ENV_SECRET_SCHEMA'
+[0m16:54:51.916516 [debug] [MainThread]: Command `dbt run` failed at 16:54:51.916516 after 0.56 seconds
+[0m16:54:51.917514 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000026DFFBF1C10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000026D8142CAD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000026D8142CB60>]}
+[0m16:54:51.918515 [debug] [MainThread]: Flushing usage events
+[0m16:54:53.343614 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:56:49.622677 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C2F0B48EC0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C2F15843E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C2F12016A0>]}
+
+
+============================== 16:56:49.631362 | e8886ef9-a0ed-481f-8632-a4680421726b ==============================
+[0m16:56:49.631362 [info ] [MainThread]: Running with dbt=1.11.12
+[0m16:56:49.633369 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'False', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\De-Life4\\snowflake_training_for_trainee-1\\dbt\\mydbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'invocation_command': 'dbt run --select mails_normalized_todo', 'use_colors': 'True', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\De-Life4\\snowflake_training_for_trainee-1\\dbt\\mydbt\\logs'}
+[0m16:56:49.645052 [error] [MainThread]: Encountered an error:
+Parsing Error
+  Env var required but not provided: 'DBT_ENV_SECRET_PRIVATE_KEY'
+[0m16:56:49.645827 [debug] [MainThread]: Command `dbt run` failed at 16:56:49.645827 after 0.37 seconds
+[0m16:56:49.646839 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C2EDEE6DE0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C2F2E7C860>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C2F175FE90>]}
+[0m16:56:49.646839 [debug] [MainThread]: Flushing usage events
+[0m16:56:50.909334 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:02:41.251361 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FF83413380>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FF8040AF00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FF83366870>]}
+
+
+============================== 17:02:41.261790 | 25016b8e-176e-43c3-a5e1-4ef852295b23 ==============================
+[0m17:02:41.261790 [info ] [MainThread]: Running with dbt=1.11.12
+[0m17:02:41.263797 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'False', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\De-Life4\\snowflake_training_for_trainee-1\\dbt\\mydbt', 'indirect_selection': 'eager', 'use_colors': 'True', 'invocation_command': 'dbt run --select mails_normalized_todo', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\De-Life4\\snowflake_training_for_trainee-1\\dbt\\mydbt\\logs'}
+[0m17:02:42.390071 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m17:02:42.390071 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m17:02:42.390071 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m17:02:43.057549 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '25016b8e-176e-43c3-a5e1-4ef852295b23', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FF86412270>]}
+[0m17:02:43.123825 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '25016b8e-176e-43c3-a5e1-4ef852295b23', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FF81101100>]}
+[0m17:02:43.138605 [info ] [MainThread]: Registered adapter: snowflake=1.11.6
+[0m17:02:44.217670 [debug] [MainThread]: checksum: f368f5348cf42803b94ef7fb8257ecf3bf9a9a16dd9c8c51fe5172f2dbeb457f, vars: {}, profile: , target: , version: 1.11.12
+[0m17:02:44.217670 [error] [MainThread]: Encountered an error:
+'cp932' codec can't decode byte 0x88 in position 395: illegal multibyte sequence
+[0m17:02:44.222795 [error] [MainThread]: Traceback (most recent call last):
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\cli\requires.py", line 182, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\cli\requires.py", line 128, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\cli\requires.py", line 276, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\cli\requires.py", line 321, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\cli\requires.py", line 391, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\cli\requires.py", line 368, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\cli\requires.py", line 407, in wrapper
+    setup_manifest(ctx, write=write, write_perf_info=write_perf_info)
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\cli\requires.py", line 434, in setup_manifest
+    ctx.obj["manifest"] = parse_manifest(
+                          ^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\parser\manifest.py", line 2257, in parse_manifest
+    manifest = ManifestLoader.get_full_manifest(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\parser\manifest.py", line 316, in get_full_manifest
+    loader = cls(
+             ^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\parser\manifest.py", line 267, in __init__
+    self.manifest.state_check = self.build_manifest_state_check()
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\parser\manifest.py", line 1078, in build_manifest_state_check
+    project_hashes[name] = FileHash.from_contents(fp.read())
+                                                  ^^^^^^^^^
+UnicodeDecodeError: 'cp932' codec can't decode byte 0x88 in position 395: illegal multibyte sequence
+
+[0m17:02:44.225470 [debug] [MainThread]: Command `dbt run` failed at 17:02:44.225470 after 3.51 seconds
+[0m17:02:44.225470 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FF83A7F890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FF8582A780>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FF853929C0>]}
+[0m17:02:44.225470 [debug] [MainThread]: Flushing usage events
+[0m17:02:45.475884 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:04:43.050080 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A00036B6E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A002AEBEC0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A002D72A80>]}
+
+
+============================== 17:04:43.070120 | d7cb5133-a73a-41dc-b0b9-b61f4cd9f6ec ==============================
+[0m17:04:43.070120 [info ] [MainThread]: Running with dbt=1.11.12
+[0m17:04:43.070120 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'False', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\De-Life4\\snowflake_training_for_trainee-1\\dbt\\mydbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'invocation_command': 'dbt run --select mails_normalized_todo', 'use_colors': 'True', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\De-Life4\\snowflake_training_for_trainee-1\\dbt\\mydbt\\logs'}
+[0m17:04:44.116592 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m17:04:44.116592 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m17:04:44.116592 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m17:04:44.457211 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'd7cb5133-a73a-41dc-b0b9-b61f4cd9f6ec', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A005904B00>]}
+[0m17:04:44.517058 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'd7cb5133-a73a-41dc-b0b9-b61f4cd9f6ec', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A003273CE0>]}
+[0m17:04:44.517058 [info ] [MainThread]: Registered adapter: snowflake=1.11.6
+[0m17:04:45.019510 [debug] [MainThread]: checksum: f368f5348cf42803b94ef7fb8257ecf3bf9a9a16dd9c8c51fe5172f2dbeb457f, vars: {}, profile: , target: , version: 1.11.12
+[0m17:04:45.022205 [error] [MainThread]: Encountered an error:
+'cp932' codec can't decode byte 0x88 in position 395: illegal multibyte sequence
+[0m17:04:45.023205 [error] [MainThread]: Traceback (most recent call last):
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\cli\requires.py", line 182, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\cli\requires.py", line 128, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\cli\requires.py", line 276, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\cli\requires.py", line 321, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\cli\requires.py", line 391, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\cli\requires.py", line 368, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\cli\requires.py", line 407, in wrapper
+    setup_manifest(ctx, write=write, write_perf_info=write_perf_info)
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\cli\requires.py", line 434, in setup_manifest
+    ctx.obj["manifest"] = parse_manifest(
+                          ^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\parser\manifest.py", line 2257, in parse_manifest
+    manifest = ManifestLoader.get_full_manifest(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\parser\manifest.py", line 316, in get_full_manifest
+    loader = cls(
+             ^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\parser\manifest.py", line 267, in __init__
+    self.manifest.state_check = self.build_manifest_state_check()
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\parser\manifest.py", line 1078, in build_manifest_state_check
+    project_hashes[name] = FileHash.from_contents(fp.read())
+                                                  ^^^^^^^^^
+UnicodeDecodeError: 'cp932' codec can't decode byte 0x88 in position 395: illegal multibyte sequence
+
+[0m17:04:45.025209 [debug] [MainThread]: Command `dbt run` failed at 17:04:45.024205 after 2.48 seconds
+[0m17:04:45.025209 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A0045D3DD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A0054A6C00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A004992630>]}
+[0m17:04:45.025209 [debug] [MainThread]: Flushing usage events
+[0m17:04:46.492177 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:11:56.476030 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000018868BC9BB0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000018868BCAD80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000018868826EA0>]}
+
+
+============================== 17:11:56.476030 | 5cbb5dcb-81e9-4b0e-b8a0-68fa493566ef ==============================
+[0m17:11:56.476030 [info ] [MainThread]: Running with dbt=1.11.12
+[0m17:11:56.489983 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'False', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\De-Life4\\snowflake_training_for_trainee-1\\dbt\\mydbt', 'invocation_command': 'dbt run --select mails_normalized_todo', 'indirect_selection': 'eager', 'use_colors': 'True', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\De-Life4\\snowflake_training_for_trainee-1\\dbt\\mydbt\\logs'}
+[0m17:11:57.507602 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m17:11:57.508302 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m17:11:57.508302 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m17:11:57.891229 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '5cbb5dcb-81e9-4b0e-b8a0-68fa493566ef', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000018865E37950>]}
+[0m17:11:57.974935 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '5cbb5dcb-81e9-4b0e-b8a0-68fa493566ef', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001886B46DE20>]}
+[0m17:11:57.985156 [info ] [MainThread]: Registered adapter: snowflake=1.11.6
+[0m17:11:58.408483 [debug] [MainThread]: checksum: f368f5348cf42803b94ef7fb8257ecf3bf9a9a16dd9c8c51fe5172f2dbeb457f, vars: {}, profile: , target: , version: 1.11.12
+[0m17:11:58.408483 [error] [MainThread]: Encountered an error:
+'cp932' codec can't decode byte 0x88 in position 395: illegal multibyte sequence
+[0m17:11:58.408483 [error] [MainThread]: Traceback (most recent call last):
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\cli\requires.py", line 182, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\cli\requires.py", line 128, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\cli\requires.py", line 276, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\cli\requires.py", line 321, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\cli\requires.py", line 391, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\cli\requires.py", line 368, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\cli\requires.py", line 407, in wrapper
+    setup_manifest(ctx, write=write, write_perf_info=write_perf_info)
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\cli\requires.py", line 434, in setup_manifest
+    ctx.obj["manifest"] = parse_manifest(
+                          ^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\parser\manifest.py", line 2257, in parse_manifest
+    manifest = ManifestLoader.get_full_manifest(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\parser\manifest.py", line 316, in get_full_manifest
+    loader = cls(
+             ^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\parser\manifest.py", line 267, in __init__
+    self.manifest.state_check = self.build_manifest_state_check()
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\parser\manifest.py", line 1078, in build_manifest_state_check
+    project_hashes[name] = FileHash.from_contents(fp.read())
+                                                  ^^^^^^^^^
+UnicodeDecodeError: 'cp932' codec can't decode byte 0x88 in position 395: illegal multibyte sequence
+
+[0m17:11:58.408483 [debug] [MainThread]: Command `dbt run` failed at 17:11:58.408483 after 2.54 seconds
+[0m17:11:58.408483 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000188690AADB0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001886B6AB1A0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001886B5AFCE0>]}
+[0m17:11:58.408483 [debug] [MainThread]: Flushing usage events
+[0m17:11:59.924217 [debug] [MainThread]: An error was encountered while trying to flush usage events

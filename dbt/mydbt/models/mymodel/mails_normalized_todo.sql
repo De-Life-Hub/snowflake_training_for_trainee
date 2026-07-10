@@ -68,7 +68,7 @@ ai_calculated AS (
 -- 2. 最後に、画像に合わせた「日本語の列名」を整えつつ、TODOのみに絞り込みます
 SELECT
     -- 画像の「期日」に相当する列 (受信日時を日付の形式に整える)
-    TO_VARCHAR(RECEIVED_AT, 'YYYY/MM/DD') AS "期日",
+    TO_DATE(RECEIVED_AT) AS "期日",
     
     -- 画像の「TODO」に相当する列 (メールの件名を表示)
     SUBJECT AS "TODO", 
