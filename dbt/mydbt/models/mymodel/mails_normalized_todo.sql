@@ -5,7 +5,7 @@
 
 WITH labels AS (
     SELECT ARRAY_AGG(LABEL) WITHIN GROUP (ORDER BY SORT_ORDER) AS label_array
-    FROM {{ this.database }}.NORMALIZED_TODO.CLASSIFY_TEXT_LABELS_TODO
+    FROM {{ ref('classify_text_labels') }}
 ),
 
 trimmed AS (  -- 前処理としてHTMLタグを消して、4000字に切る。
@@ -73,7 +73,7 @@ SELECT
     summary AS AI_SUMMARY,
     CASE
         WHEN category_raw NOT IN (
-            SELECT LABEL FROM {{ this.database }}.NORMALIZED_TODO.CLASSIFY_TEXT_LABELS_TODO
+            SELECT LABEL FROM {{ this.database }}.NORMALIZED_TODO.CLASSIFY_TEXT_LABELS_TODO -- {{ ref('CLASSIFY_TEXT_LABELS') }}
         ) THEN 'その他'
         ELSE category_raw
     END AS AI_CATEGORY,
