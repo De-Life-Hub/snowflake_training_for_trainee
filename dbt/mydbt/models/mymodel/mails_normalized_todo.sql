@@ -62,7 +62,7 @@ ai_calculated AS (
         SNOWFLAKE.CORTEX.SENTIMENT(k.body_trimmed) AS sentiment_score,
         k.keywords,
 
-        -- 💡【新規追加】AIに本文から「具体的なTODO内容」を抽出させる指示
+        -- 【新規追加】AIに本文から「具体的なTODO内容」を抽出させる指示
         TRIM(SNOWFLAKE.CORTEX.COMPLETE(
             'mistral-large2',
             CONCAT(
@@ -72,12 +72,12 @@ ai_calculated AS (
             )
         )) AS todo_task_extracted,
 
-        -- 💡【新規追加】AIに本文から「期限の日付」を抽出させる指示
+        -- 【新規追加】AIに本文から「期限の日付」を抽出させる指示
         TRIM(SNOWFLAKE.CORTEX.COMPLETE(
             'mistral-large2',
             CONCAT(
                 '以下のメール本文から、タスクの期限・期日（日付）を抽出して「YYYY-MM-DD」の形式のみで返してください。',
-                'もし本文中に明確な期限が書かれていない場合は、メールの受信日である「', TO_DATE(k.RECEIVED_AT, 'YYYY-MM-DD'), '」をそのまま返してください。',
+                'もし本文中に明確な期限が書かれていない場合は、メールの受信日である「', TO_DATE(k.RECEIVED_AT), '」をそのまま返してください。',
                 '余計な文字や説明、マークダウンは絶対に含めず、日付の文字列（例: 2026-07-07）のみを返してください。\n',
                 'メール本文: ', k.body_trimmed
             )
