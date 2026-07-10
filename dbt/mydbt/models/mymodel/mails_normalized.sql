@@ -73,7 +73,7 @@ SELECT
     summary AS AI_SUMMARY,
     CASE
         WHEN category_raw NOT IN (
-            SELECT LABEL FROM {{ ref('CLASSIFY_TEXT_LABELS') }}
+            SELECT LABEL FROM {{ ref('classify_text_labels') }}
         ) THEN 'その他'
         ELSE category_raw
     END AS AI_CATEGORY,
