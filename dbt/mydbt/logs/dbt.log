@@ -338,3 +338,60 @@ UnicodeDecodeError: 'cp932' codec can't decode byte 0x88 in position 395: illega
 [0m17:11:58.408483 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000188690AADB0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001886B6AB1A0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001886B5AFCE0>]}
 [0m17:11:58.408483 [debug] [MainThread]: Flushing usage events
 [0m17:11:59.924217 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:35:05.178069 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000011834B25520>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000011834EBBFB0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000011834AE03E0>]}
+
+
+============================== 17:35:05.192739 | cf802de6-bdc7-456a-a44b-b298f8d49d25 ==============================
+[0m17:35:05.192739 [info ] [MainThread]: Running with dbt=1.11.12
+[0m17:35:05.194122 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'empty': 'False', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\De-Life4\\snowflake_training_for_trainee-1\\dbt\\mydbt', 'use_colors': 'True', 'invocation_command': 'dbt run --select mails_normalized_todo', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\De-Life4\\snowflake_training_for_trainee-1\\dbt\\mydbt\\logs'}
+[0m17:35:06.145552 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m17:35:06.145552 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m17:35:06.145552 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m17:35:06.477575 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'cf802de6-bdc7-456a-a44b-b298f8d49d25', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000011837D9F8F0>]}
+[0m17:35:06.544616 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'cf802de6-bdc7-456a-a44b-b298f8d49d25', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000118381FFA10>]}
+[0m17:35:06.544616 [info ] [MainThread]: Registered adapter: snowflake=1.11.6
+[0m17:35:07.010722 [debug] [MainThread]: checksum: f368f5348cf42803b94ef7fb8257ecf3bf9a9a16dd9c8c51fe5172f2dbeb457f, vars: {}, profile: , target: , version: 1.11.12
+[0m17:35:07.010722 [error] [MainThread]: Encountered an error:
+'cp932' codec can't decode byte 0x88 in position 395: illegal multibyte sequence
+[0m17:35:07.020418 [error] [MainThread]: Traceback (most recent call last):
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\cli\requires.py", line 182, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\cli\requires.py", line 128, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\cli\requires.py", line 276, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\cli\requires.py", line 321, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\cli\requires.py", line 391, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\cli\requires.py", line 368, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\cli\requires.py", line 407, in wrapper
+    setup_manifest(ctx, write=write, write_perf_info=write_perf_info)
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\cli\requires.py", line 434, in setup_manifest
+    ctx.obj["manifest"] = parse_manifest(
+                          ^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\parser\manifest.py", line 2257, in parse_manifest
+    manifest = ManifestLoader.get_full_manifest(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\parser\manifest.py", line 316, in get_full_manifest
+    loader = cls(
+             ^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\parser\manifest.py", line 267, in __init__
+    self.manifest.state_check = self.build_manifest_state_check()
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\De-Life4\AppData\Local\Programs\Python\Python312\Lib\site-packages\dbt\parser\manifest.py", line 1078, in build_manifest_state_check
+    project_hashes[name] = FileHash.from_contents(fp.read())
+                                                  ^^^^^^^^^
+UnicodeDecodeError: 'cp932' codec can't decode byte 0x88 in position 395: illegal multibyte sequence
+
+[0m17:35:07.020418 [debug] [MainThread]: Command `dbt run` failed at 17:35:07.020418 after 2.34 seconds
+[0m17:35:07.020418 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000011836E66D20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000011836EB31A0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000118383279B0>]}
+[0m17:35:07.020418 [debug] [MainThread]: Flushing usage events
+[0m17:35:08.366578 [debug] [MainThread]: An error was encountered while trying to flush usage events
