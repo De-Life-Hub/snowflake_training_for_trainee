@@ -89,8 +89,7 @@ ai_calculated AS (
 -- 最後に、画面に表示したい4つの列（期日、TODO、完了 / 未完了、優先度）のみに絞り込みます
 SELECT
     -- 1. AIが抽出した期限を日付型（または文字）にして「期日」とする
-    TRY_TO_DATE(todo_deadline_extracted) AS "期日",
-    
+    TRY_TO_DATE(TRY_TO_TIMESTAMP(todo_deadline_extracted::varchar)) AS "期日",    
     -- 2. AIが抽出したタスクの本文内容を「TODO」とする
     todo_task_extracted AS "TODO", 
     
