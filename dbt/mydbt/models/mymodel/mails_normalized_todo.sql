@@ -41,37 +41,53 @@ keywords_extracted AS (
     FROM trimmed
 ),
 
-ai_processed AS (
--- (ここまでは元のコードのままでOKです)
+-- 1. ここでAIの各種スコアやカテゴリの生データを一度計算します（元コードのロジックを維持）
+ai_calculated AS (
+    SELECT
+        k.MESSAGE_ID,
+        k.SUBJECT,
+        k.FROM_EMAIL,
+        k.RECEIVED_AT,
+        SNOWFLAKE.CORTEX.SUMMARIZE(k.body_trimmed) AS summary,
+        TRIM(SNOWFLAKE.CORTEX.COMPLETE(
+            'mistral-large2',
+            CONCAT(
+                '以下のメール本文を読み、次のカテゴリから最も適切なものを1つだけ答えてください。',
+                'カテゴリ名のみ返してください。余分な説明は不要です。\n',
+                'カテゴリ: ', ARRAY_TO_STRING(l.label_array, ' / '), '\n',
+                'キーワード: ', k.keywords, '\n',
+                'メール本文: ', k.body_trimmed
+            )
+        )) AS category_raw,
+        SNOWFLAKE.CORTEX.SENTIMENT(k.body_trimmed) AS sentiment_score,
+        k.keywords
+    FROM keywords_extracted AS k
+    CROSS JOIN labels AS l
+)
 
+-- 2. 最後に、画像に合わせた「日本語の列名」を整えつつ、TODOのみに絞り込みます
 SELECT
-    -- 1. 画像の「期日」に相当する列 (受信日時を日付の形式に整える)
+    -- 画像の「期日」に相当する列 (受信日時を日付の形式に整える)
     TO_VARCHAR(RECEIVED_AT, 'YYYY/MM/DD') AS "期日",
     
-    -- 2. 画像の「TODO」に相当する列 (メールの件名または要約を表示)
+    -- 画像の「TODO」に相当する列 (メールの件名を表示)
     SUBJECT AS "TODO", 
     
-    -- 3. 画像の「完了 / 未完了」に相当する列
-    -- ※まだ作成されたばかりなので、初期値として一律 '未完了' にするか、
-    --   AI判定の状況（AI_PROCESSEDがTRUEなら完了など）に合わせて分岐させます。
-    CASE 
-        WHEN AI_PROCESSED = TRUE THEN '完了'
-        ELSE '未完了'
-    END AS "完了 / 未完了",
+    -- 画像の「完了 / 未完了」に相当する列 (初期データは一律 '未完了' とします)
+    '未完了' AS "完了 / 未完了",
     
-    -- 4. 画像の「優先度」に相当する列
-    -- ※ここでは例として、AIの感情（AI_SENTIMENT）が 'negative'（至急対応が必要そうなもの）
-    --   であれば星2つ、それ以外は星1つのように動的に星（★）マークを作っています。
+    -- 画像の「優先度」に相当する列 (ネガティブな内容＝至急対応なら星2つ、それ以外は星1つ)
     CASE 
         WHEN sentiment_score <= -0.3 THEN '★★'
         ELSE '★'
     END AS "優先度",
 
-    -- 【裏側のデータ用】Streamlitの詳細表示機能などでも使うため、元の列もそのまま残しておきます
+    -- 【裏側のデータ用】元の列名もテーブルの互換性のために残しておきます
     MESSAGE_ID,
+    SUBJECT,
     FROM_EMAIL,
     RECEIVED_AT,
-    AI_PROCESSED,
+    TRUE AS AI_PROCESSED,
     summary AS AI_SUMMARY,
     CASE
         WHEN category_raw NOT IN (
@@ -92,13 +108,10 @@ SELECT
         'keywords', keywords
     ) AS AI_RAW_RESULT,
     CURRENT_TIMESTAMP() AS NORMALIZED_AT
-FROM ai_processed
-
--- 💡【超重要】ここでカテゴリが「TODO」のものだけに絞り込みます
--- ※AIの出力揺れに対応するため、念のため「category_raw」をチェックします
+FROM ai_calculated
 WHERE category_raw = 'TODO' 
    OR category_raw = 'TODOアプリ'
-)
+
 
 -- SELECT
 --     MESSAGE_ID,

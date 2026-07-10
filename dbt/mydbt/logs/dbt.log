@@ -1,0 +1,78 @@
+[0m16:17:04.216089 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000157AEED70B0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000157AE50A5A0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000157AF4144A0>]}
+
+
+============================== 16:17:04.216089 | 4f604fd8-c23a-488d-a34b-7aca5991184d ==============================
+[0m16:17:04.216089 [info ] [MainThread]: Running with dbt=1.11.12
+[0m16:17:04.216089 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'False', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'profiles_dir': 'C:\\Users\\De-Life4\\snowflake_training_for_trainee-1\\dbt\\mydbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'indirect_selection': 'eager', 'invocation_command': 'dbt run --select mails_normalized_todo', 'use_colors': 'True', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\De-Life4\\snowflake_training_for_trainee-1\\dbt\\mydbt\\logs'}
+[0m16:17:04.233791 [error] [MainThread]: Encountered an error:
+Parsing Error
+  Env var required but not provided: 'DBT_ENV_SECRET_ACCOUNT'
+[0m16:17:04.234790 [debug] [MainThread]: Command `dbt run` failed at 16:17:04.234790 after 0.17 seconds
+[0m16:17:04.235787 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000157ADE1D670>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000157AF4AEBA0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000157AE575490>]}
+[0m16:17:04.235787 [debug] [MainThread]: Flushing usage events
+[0m16:17:05.297338 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:18:08.811859 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000214BFD151C0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000214BFABC980>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000214C03E9AC0>]}
+
+
+============================== 16:18:08.827002 | d1a098f1-03b4-49e2-9dcb-bbfadf05fdf0 ==============================
+[0m16:18:08.827002 [info ] [MainThread]: Running with dbt=1.11.12
+[0m16:18:08.828957 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'False', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': '.', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'use_colors': 'True', 'indirect_selection': 'eager', 'invocation_command': 'dbt run --select mails_normalized_todo --profiles-dir .', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\De-Life4\\snowflake_training_for_trainee-1\\dbt\\mydbt\\logs'}
+[0m16:18:08.836880 [error] [MainThread]: Encountered an error:
+Parsing Error
+  Env var required but not provided: 'DBT_ENV_SECRET_ACCOUNT'
+[0m16:18:08.837891 [debug] [MainThread]: Command `dbt run` failed at 16:18:08.837891 after 0.23 seconds
+[0m16:18:08.837891 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000214C0870B60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000214C092FE00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000214C1FFADB0>]}
+[0m16:18:08.838887 [debug] [MainThread]: Flushing usage events
+[0m16:18:10.212687 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:18:22.910993 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022A37B67B90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022A37C74E90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022A37C77230>]}
+
+
+============================== 16:18:22.914093 | 45648d89-2a1a-45a3-a6a5-ae44c3fccf16 ==============================
+[0m16:18:22.914093 [info ] [MainThread]: Running with dbt=1.11.12
+[0m16:18:22.914093 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'empty': 'False', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\De-Life4\\snowflake_training_for_trainee-1\\dbt\\mydbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'use_colors': 'True', 'indirect_selection': 'eager', 'invocation_command': 'dbt run --select mails_normalized_todo', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\De-Life4\\snowflake_training_for_trainee-1\\dbt\\mydbt\\logs'}
+[0m16:18:22.921466 [error] [MainThread]: Encountered an error:
+Parsing Error
+  Env var required but not provided: 'DBT_ENV_SECRET_ACCOUNT'
+[0m16:18:22.921466 [debug] [MainThread]: Command `dbt run` failed at 16:18:22.921466 after 0.15 seconds
+[0m16:18:22.925968 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022A39B43BF0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022A383F00B0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022A383BF2C0>]}
+[0m16:18:22.926986 [debug] [MainThread]: Flushing usage events
+[0m16:18:24.036496 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:21:57.772799 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E5DEED33B0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E5DF92F740>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E5E0E06960>]}
+
+
+============================== 16:21:57.783466 | 73b5d78e-37da-4345-8fc3-7d2fc84fd459 ==============================
+[0m16:21:57.783466 [info ] [MainThread]: Running with dbt=1.11.12
+[0m16:21:57.784467 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'False', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\De-Life4\\snowflake_training_for_trainee-1\\dbt\\mydbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'indirect_selection': 'eager', 'use_colors': 'True', 'invocation_command': 'dbt run --select mails_normalized_todo', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\De-Life4\\snowflake_training_for_trainee-1\\dbt\\mydbt\\logs'}
+[0m16:21:57.792467 [error] [MainThread]: Encountered an error:
+Parsing Error
+  Env var required but not provided: 'DBT_ENV_SECRET_ACCOUNT'
+[0m16:21:57.794470 [debug] [MainThread]: Command `dbt run` failed at 16:21:57.793468 after 0.56 seconds
+[0m16:21:57.794470 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E5DD094200>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E5DF6CFE60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E5DFA378F0>]}
+[0m16:21:57.794470 [debug] [MainThread]: Flushing usage events
+[0m16:21:59.099537 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:24:20.893757 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000014989AE8860>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000014987DC58E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000014986F7AF30>]}
+
+
+============================== 16:24:20.895689 | e7c9c65a-b623-4670-b2a8-ac5894fdaf7a ==============================
+[0m16:24:20.895689 [info ] [MainThread]: Running with dbt=1.11.12
+[0m16:24:20.895689 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'False', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'profiles_dir': 'C:\\Users\\De-Life4\\snowflake_training_for_trainee-1\\dbt\\mydbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'indirect_selection': 'eager', 'use_colors': 'True', 'invocation_command': 'dbt run --select mails_normalized_todo', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\De-Life4\\snowflake_training_for_trainee-1\\dbt\\mydbt\\logs'}
+[0m16:24:20.912674 [error] [MainThread]: Encountered an error:
+Parsing Error
+  Env var required but not provided: 'DBT_ENV_SECRET_ACCOUNT'
+[0m16:24:20.913511 [debug] [MainThread]: Command `dbt run` failed at 16:24:20.913511 after 0.53 seconds
+[0m16:24:20.914524 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001498BF0C3E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001498A7EFE90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001498BEBAE70>]}
+[0m16:24:20.914524 [debug] [MainThread]: Flushing usage events
+[0m16:24:22.473988 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:27:49.128453 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021609BA95B0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021609BABA10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021609F9CB00>]}
+
+
+============================== 16:27:49.139231 | 57baeb2d-0b6b-4cbe-81dc-57c8470ad4fa ==============================
+[0m16:27:49.139231 [info ] [MainThread]: Running with dbt=1.11.12
+[0m16:27:49.143346 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'empty': 'False', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\De-Life4\\snowflake_training_for_trainee-1\\dbt\\mydbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'use_colors': 'True', 'indirect_selection': 'eager', 'invocation_command': 'dbt run --select mails_normalized_todo', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\De-Life4\\snowflake_training_for_trainee-1\\dbt\\mydbt\\logs'}
+[0m16:27:49.144761 [error] [MainThread]: Encountered an error:
+Parsing Error
+  Env var required but not provided: 'DBT_ENV_SECRET_ACCOUNT'
+[0m16:27:49.144761 [debug] [MainThread]: Command `dbt run` failed at 16:27:49.144761 after 0.47 seconds
+[0m16:27:49.154230 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000021609CFFE90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002160B3EE570>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002160B3ED700>]}
+[0m16:27:49.154230 [debug] [MainThread]: Flushing usage events
+[0m16:27:50.565357 [debug] [MainThread]: An error was encountered while trying to flush usage events
