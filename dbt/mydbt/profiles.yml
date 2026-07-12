@@ -3,7 +3,7 @@ mydbt:
   outputs:
     dev:
       type: snowflake
-      account: "{{ env_var('DBT_ENV_SECRET_ACCOUNT') }}"
+#      account: "{{ env_var('DBT_ENV_SECRET_ACCOUNT') }}"
       user: "{{ env_var('DBT_ENV_SECRET_USER') }}"
       role: "{{ env_var('DBT_ENV_SECRET_ROLE') }}"
       warehouse: "{{ env_var('DBT_ENV_SECRET_WAREHOUSE') }}"
