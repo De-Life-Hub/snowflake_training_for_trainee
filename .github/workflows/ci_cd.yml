@@ -62,16 +62,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-# test
-      - name: Debug
-        run: echo ${{ secrets.HCP_API_TOKEN }} ${{ vars.TF_WORKSPACE }} >> test.txt
-
-      - name: Upload debug file
-        uses: actions/upload-artifact@v4
-        with:
-          name: test
-          path: test.txt
-#
 
       - name: Fetch variables from HCP Terraform
         run: |
@@ -79,7 +69,7 @@ jobs:
             --header "Authorization: Bearer ${{ secrets.HCP_API_TOKEN }}" \
             --header "Content-Type: application/vnd.api+json" \
             "https://app.terraform.io/api/v2/workspaces/${{ vars.HCP_WORKSPACE_ID }}/vars" \
-            | python3 src/fetch_tfc_vars.py >> $GITHUB_ENV
+            | python3 src/fetch_tfc_vars.py # check output # >> $GITHUB_ENV
     
       - name: Terraform Output
         working-directory: terraform
@@ -90,16 +80,6 @@ jobs:
           terraform init
           DB_NAME=$(terraform output -raw training_db_name)
           echo "DBT_DATABASE=$DB_NAME" >> $GITHUB_ENV
-# test
-      - name: Debug 2
-        run: cp "$GITHUB_ENV" test_2.txt
-
-      - name: Upload debug file
-        uses: actions/upload-artifact@v4
-        with:
-          name: test-2
-          path: test_2.txt
-#
 
       - name: Install dbt and Run
         working-directory: ./dbt/mydbt
