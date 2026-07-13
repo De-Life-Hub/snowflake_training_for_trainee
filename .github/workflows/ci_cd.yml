@@ -17,15 +17,6 @@ jobs:
       TF_WORKSPACE: ${{ vars.TF_WORKSPACE }}
 
     steps:
-# test
-      - name: Check token exists
-        run: |
-          if [ -z "${{ secrets.HCP_API_TOKEN }}" ]; then
-            echo "TOKEN is empty"
-          else
-            echo "TOKEN exists"
-          fi
-#
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -71,6 +62,16 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+# test
+      - name: Debug
+        run: echo ${{ secrets.HCP_API_TOKEN }} ${{ vars.TF_WORKSPACE }} >> test.txt
+
+      - name: Upload debug file
+        uses: actions/upload-artifact@v4
+        with:
+          name: test
+          path: test.txt
+#
 
       - name: Fetch variables from HCP Terraform
         run: |
@@ -89,6 +90,16 @@ jobs:
           terraform init
           DB_NAME=$(terraform output -raw training_db_name)
           echo "DBT_DATABASE=$DB_NAME" >> $GITHUB_ENV
+# test
+      - name: Debug 2
+        run: cp "$GITHUB_ENV" test_2.txt
+
+      - name: Upload debug file
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-2
+          path: test_2.txt
+#
 
       - name: Install dbt and Run
         working-directory: ./dbt/mydbt
