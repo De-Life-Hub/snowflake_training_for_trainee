@@ -17,6 +17,15 @@ jobs:
       TF_WORKSPACE: ${{ vars.TF_WORKSPACE }}
 
     steps:
+# test
+      - name: Check token exists
+        run: |
+          if [ -z "${{ secrets.HCP_API_TOKEN }}" ]; then
+            echo "TOKEN is empty"
+          else
+            echo "TOKEN exists"
+          fi
+#
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -70,18 +79,7 @@ jobs:
             --header "Content-Type: application/vnd.api+json" \
             "https://app.terraform.io/api/v2/workspaces/${{ vars.HCP_WORKSPACE_ID }}/vars" \
             | python3 src/fetch_tfc_vars.py >> $GITHUB_ENV
-
-# test
-      - name: Debug GITHUB_ENV
-        run: cp "$GITHUB_ENV" github_env.txt
-
-      - name: Upload debug file
-        uses: actions/upload-artifact@v4
-        with:
-          name: github-env
-          path: github_env.txt
-#
-
+    
       - name: Terraform Output
         working-directory: terraform
         env:
