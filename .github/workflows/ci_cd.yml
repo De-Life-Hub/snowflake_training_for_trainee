@@ -70,8 +70,6 @@ jobs:
             --header "Content-Type: application/vnd.api+json" \
             "https://app.terraform.io/api/v2/workspaces/${{ vars.HCP_WORKSPACE_ID }}/vars" \
             | python3 src/fetch_tfc_vars.py >> $GITHUB_ENV
-            echo "===== GITHUB_ENV =====" # test
-            cat "$GITHUB_ENV" # test
     
       - name: Terraform Output
         working-directory: terraform
