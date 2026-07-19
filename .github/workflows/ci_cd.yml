@@ -70,16 +70,6 @@ jobs:
             --header "Content-Type: application/vnd.api+json" \
             "https://app.terraform.io/api/v2/workspaces/${{ vars.HCP_WORKSPACE_ID }}/vars" \
             | python3 src/fetch_tfc_vars.py >> $GITHUB_ENV
-# test
-      - name: Debug 
-        run: echo $GITHUB_ENV >> test.txt
-
-      - name: Upload debug file
-        uses: actions/upload-artifact@v4
-        with:
-          name: test
-          path: test.txt
-#
     
       - name: Terraform Output
         working-directory: terraform
