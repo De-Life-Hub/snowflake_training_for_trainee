@@ -3,13 +3,13 @@
 # ==========================================
 resource "snowflake_schema" "training_raw" {
   database = snowflake_database.training_db.name
-  name     = "schema_name" # TODO:ハンドアウトを参照し、適切なスキーマ名を設定してください
+  name     = "RAW" # TODO:ハンドアウトを参照し、適切なスキーマ名を設定してください
   comment  = "Raw mail data ingested from S3."
 }
 
 resource "snowflake_schema" "training_normalized" {
   database = snowflake_database.training_db.name
-  name     = "schema2_name" # TODO:ハンドアウトを参照し、適切なスキーマ名を設定してください
+  name     = "NORMALIZED" # TODO:ハンドアウトを参照し、適切なスキーマ名を設定してください
   comment  = "Processed data for Streamlit."
 }
 

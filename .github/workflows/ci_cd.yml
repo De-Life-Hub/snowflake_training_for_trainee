@@ -4,14 +4,14 @@ on:
   push:
     branches:
       - develop
-      - # TODO: あなたの作業ブランチを追加してください
+      - feature/shimura # TODO: あなたの作業ブランチを追加してください
   workflow_dispatch:
 
 jobs:
   terraform:
     name: Terraform
     runs-on: ubuntu-latest
-    environment: # TODO: あなたのEnvironmentを指定してください
+    environment: ${{ github.actor }} # TODO: あなたのEnvironmentを指定してください
     env:
       TF_TOKEN_app_terraform_io: ${{ secrets.HCP_API_TOKEN }}
       TF_WORKSPACE: ${{ vars.TF_WORKSPACE }}
@@ -24,7 +24,7 @@ jobs:
         uses: hashicorp/setup-terraform@v3
 
       - name: Terraform Init
-        working-directory: # TODO: Terraformファイル（.tf）が置かれているディレクトリを指定してください
+        working-directory: terraform # TODO: Terraformファイル（.tf）が置かれているディレクトリを指定してください
         run: terraform init
 
       - name: Terraform Format Check
@@ -43,7 +43,7 @@ jobs:
   dbt:
     name: dbt
     runs-on: ubuntu-latest
-    environment: # TODO: あなたのEnvironmentを指定してください
+    environment: ${{ github.actor }} # TODO: あなたのEnvironmentを指定してください
     needs: terraform
     if: |
       success() ||
